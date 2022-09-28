@@ -10,6 +10,14 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/component: database
 data:
+  ## Set Insecure 
+  EVENTSTORE_INSECURE: {{ quote .Values.insecure }}
+  ## Set  projections 
+  EVENTSTORE_RUN_PROJECTIONS: {{ quote .Values.runProjections }}
+  ## Set standard projections 
+  EVENTSTORE_START_STANDARD_PROJECTIONS: {{ quote .Values.startStandardProections }}
+  ## Set stats to db
+  EVENTSTORE_WRITE_STATS_TO_DB: {{ quote .Values.enableStatsWriteToDb }}
   ## Internal TCP port.
   EVENTSTORE_INT_TCP_PORT: {{ quote .Values.intTcpPort }}
   ## External TCP port.

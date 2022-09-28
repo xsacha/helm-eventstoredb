@@ -5,6 +5,9 @@ Event Store is installed!
 | |___ \ V /  __/ | | | |_   ___) | || (_) | | |  __/
 |_____| \_/ \___|_| |_|\__| |____/ \__\___/|_|  \___|
 
+Docs: https://developers.eventstore.com/
+Configure Your Connection: https://configurator.eventstore.com/
+
 You can access Event Store:
 
   * Within your cluster, using the following URI:
@@ -15,7 +18,7 @@ You can access Event Store:
     tcp://{{ include "eventstore.dns" . }}:{{ .Values.extTcpPort }}
     {{ end }}
 
-    ref: https://eventstore.org/docs/dotnet-api/connecting-to-a-server/index.html#uris
+    ref: https://developers.eventstore.com/clients/grpc/#connection-details
 
 {{- if gt .Values.clusterSize 1.0 }}
 You can access the Event Store admin interface:
