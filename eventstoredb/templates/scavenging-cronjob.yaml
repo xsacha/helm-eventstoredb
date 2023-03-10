@@ -2,11 +2,11 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "eventstore.fullname" . }}-scavenging
+  name: {{ include "eventstoredb.fullname" . }}-scavenging
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app.kubernetes.io/name: {{ include "eventstore.name" . }}
-    helm.sh/chart: {{ include "eventstore.chart" . }}
+    app.kubernetes.io/name: {{ include "eventstoredb.name" . }}
+    helm.sh/chart: {{ include "eventstoredb.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/component: scavenging
@@ -20,11 +20,11 @@ spec:
     spec:
       template:
         metadata:
-          name: {{ include "eventstore.fullname" . }}-scavenge
+          name: {{ include "eventstoredb.fullname" . }}-scavenge
           labels:
-            app.kubernetes.io/name: {{ include "eventstore.name" . }}
+            app.kubernetes.io/name: {{ include "eventstoredb.name" . }}
         spec:
-          serviceAccountName: {{ include "eventstore.fullname" . }}
+          serviceAccountName: {{ include "eventstoredb.fullname" . }}
           restartPolicy: OnFailure
           containers:
             - name: eventstore-scavenge
@@ -45,6 +45,6 @@ spec:
           volumes:
             - name: config
               configMap:
-                name: {{ include "eventstore.fullname" . }}-scavenging
+                name: {{ include "eventstoredb.fullname" . }}-scavenging
                 defaultMode: 0744
 {{- end }}

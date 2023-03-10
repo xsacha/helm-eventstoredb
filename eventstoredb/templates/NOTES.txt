@@ -13,9 +13,9 @@ You can access Event Store:
   * Within your cluster, using the following URI:
 
     {{ if gt .Values.clusterSize 1.0 }}
-    discover://{{ include "eventstore.dns" . }}:{{ .Values.extHttpPort }}
+    discover://{{ include "eventstoredb.dns" . }}:{{ .Values.extHttpPort }}
     {{ else }}
-    tcp://{{ include "eventstore.dns" . }}:{{ .Values.extTcpPort }}
+    tcp://{{ include "eventstoredb.dns" . }}:{{ .Values.extTcpPort }}
     {{ end }}
 
     ref: https://developers.eventstore.com/clients/grpc/#connection-details
@@ -24,7 +24,7 @@ You can access Event Store:
 You can access the Event Store admin interface:
   * From outside the cluster:
     {{- if contains "NodePort" .Values.admin.serviceType }}
-      export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "eventstore.fullname" . }}-admin)
+      export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "eventstoredb.fullname" . }}-admin)
       export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
       echo http://$NODE_IP:$NODE_PORT
     {{- else if contains "LoadBalancer" .Values.admin.serviceType }}
@@ -32,13 +32,13 @@ You can access the Event Store admin interface:
         WARNING: You have likely exposed your Event Store cluster directly to the internet.
 
         NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-              You can watch the status of by running 'kubectl get svc -w {{ include "eventstore.fullname" . }}-admin'
+              You can watch the status of by running 'kubectl get svc -w {{ include "eventstoredb.fullname" . }}-admin'
 
-      export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "eventstore.fullname" . }}-admin -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+      export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "eventstoredb.fullname" . }}-admin -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
       echo http://$SERVICE_IP:{{ .Values.extHttpPort }}
     {{- else if contains "ClusterIP" .Values.admin.serviceType }}
 
-      kubectl port-forward svc/{{ include "eventstore.fullname" . }}-admin {{ .Values.extHttpPort }}
+      kubectl port-forward svc/{{ include "eventstoredb.fullname" . }}-admin {{ .Values.extHttpPort }}
     {{- end }}
     {{- if not .Values.admin.password }}
 

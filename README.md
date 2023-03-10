@@ -18,14 +18,14 @@ The [configuration](#configuration) section below lists the parameters
 that can be configured during installation.
 
 ```shell
-helm repo add riccardone https://riccardone.github.io/helm-eventstore/
+helm repo add riccardone https://ttp://raw.githubusercontent.com/helm-eventstoredb/
 helm repo update
-helm install eventstore .
+helm install eventstoredb .
 ```
 
-To install the EventStore chart with a persistent volume bound:
+To install the EventStore chart without a persistent volume bound:
 ```shell
-helm install eventstore . --set persistence.enabled=true
+helm install eventstoredb . --set persistence.enabled=false
 ```
 
 To browse the admin interface you don't need to expose it further. Just use the port-forward feature to link a proxy from your local machine to your Kubernetes cluster where EventStore is running:

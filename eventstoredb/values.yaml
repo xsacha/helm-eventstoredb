@@ -34,7 +34,6 @@ clusterSize: 1
 ## Event Store HTTP API. The `admin.password` value should be
 ## set in a separate `creds-values.yaml` file so that you can
 ## keep it out of source control and read during deployment.
-## See the `ci` directory in this repo for the default values.
 ## ref: https://eventstore.org/docs/http-api/security/index.html
 ## ref: https://github.com/helm/helm/blob/master/docs/charts_hooks.md
 admin:
@@ -100,7 +99,7 @@ scavenging:
 
 ## Persist data to a persistent volume
 persistence:
-  enabled: false
+  enabled: true
 
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
@@ -117,7 +116,7 @@ persistence:
   # storageClass: "-"
   accessMode: ReadWriteOnce
   size: 8Gi
-  mountPath: /var/lib/eventstore
+  mountPath: /var/lib/eventstoredb
   annotations: {}
 
 resources:
