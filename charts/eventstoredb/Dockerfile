@@ -1,4 +1,4 @@
-FROM eventstore/eventstore:22.10.1-bionic as base
+FROM eventstore/eventstore:23.6.0-bionic as base
 
 USER eventstore
 

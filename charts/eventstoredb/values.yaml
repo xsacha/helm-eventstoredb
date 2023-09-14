@@ -6,7 +6,7 @@
 image: eventstore/eventstore
 ##
 ## Event Store image tag
-imageTag: release-22.10.1
+imageTag: release-23.6.0
 ##
 ## Specify a imagePullPolicy
 ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -51,7 +51,7 @@ admin:
 ## Configure a pod disruption budget for the Event Store StatefulSet.
 ## ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
 podDisruptionBudget:
-  ##
+  #
   ## Enable a pod disruption budget.
   enabled: false
   ##

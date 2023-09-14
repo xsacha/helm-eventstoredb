@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   eventstoredb:
   - apiVersion: v1
-    appVersion: 22.10.1+a
+    appVersion: 23.6.0+a
     created: 2023-03-10T12:00:00+10:00
     description: A Helm chart for Kubernetes EventStore.
     digest: b813a4de6d498d94ec0b837c59731e3693d291a38ea236dadd47aff302d93d2a
@@ -16,5 +16,5 @@ entries:
     sources:
     - https://github.com/EventStore/eventstore-docker
     - https://github.com/EventStore/EventStore
-    version: 22.10.1
-generated: "2023-03-10T12:00:00+10:00"
+    version: 23.6.0
+generated: "2023-09-15T12:00:00+10:00"
