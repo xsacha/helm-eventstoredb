@@ -18,7 +18,7 @@ The [configuration](#configuration) section below lists the parameters
 that can be configured during installation.
 
 ```shell
-helm repo add riccardone https://ttp://raw.githubusercontent.com/helm-eventstoredb/
+helm repo add xsacha https://xsacha.github.io/helm-eventstoredb/
 helm repo update
 helm install eventstoredb .
 ```
